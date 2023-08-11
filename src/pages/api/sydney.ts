@@ -7,8 +7,11 @@ import { WatchDog, createHeaders } from '@/lib/utils'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const conversationContext = req.body
-  const headers = createHeaders(req.cookies)
+  const fullCookie = req.headers.fullcookie as string
+  const headers = createHeaders(req.cookies, { fullCookie })
+  
   debug(headers)
+
   res.setHeader('Content-Type', 'text/stream; charset=UTF-8')
 
   const ws = new WebSocket('wss://sydney.bing.com/sydney/ChatHub', {

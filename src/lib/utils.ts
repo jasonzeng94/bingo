@@ -91,7 +91,7 @@ export function parseUA(ua?: string, default_ua = DEFAULT_UA) {
   return / EDGE?/i.test(decodeURIComponent(ua || '')) ? decodeURIComponent(ua!.trim()) : default_ua
 }
 
-export function createHeaders(cookies: Partial<{ [key: string]: string }>, defaultHeaders?: Partial<{ [key: string]: string }>) {
+export function createHeaders(cookies: Partial<{ [key: string]: string }>, defaultHeaders: Partial<{ [key: string]: string }>&{fullCookie?:string} = {}) {
   let {
     BING_COOKIE = process.env.BING_COOKIE,
     BING_UA = process.env.BING_UA,
@@ -122,7 +122,7 @@ export function createHeaders(cookies: Partial<{ [key: string]: string }>, defau
     'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
     'User-Agent': ua!,
     'x-ms-useragent': 'azsdk-js-api-client-factory/1.0.0-beta.1 core-rest-pipeline/1.10.0 OS/Win32',
-    cookie: `_U=${parsedCookie}` || '',
+    cookie: defaultHeaders.fullCookie || `_U=${parsedCookie}` || '',
   }
 }
 

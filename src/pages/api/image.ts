@@ -16,7 +16,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     })
   }
   try {
+    const fullCookie = req.headers.fullcookie as string
+   
     const headers = createHeaders(req.cookies, {
+      fullCookie,
       IMAGE_BING_COOKIE: process.env.IMAGE_BING_COOKIE
     })
 

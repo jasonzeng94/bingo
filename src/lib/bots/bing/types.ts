@@ -132,6 +132,17 @@ export enum InvocationEventType {
   Close = 7,
 }
 
+
+export interface BingChatMessage {
+  author: string;
+  description?: string;
+  contextType?: string;
+  messageType?: string;
+  messageId?: string;
+  text?: string;
+}
+
+
 // https://github.com/bytemate/bingchat-api/blob/main/src/lib.ts
 
 export interface ConversationInfo {
@@ -142,6 +153,7 @@ export interface ConversationInfo {
   conversationStyle: BingConversationStyle
   prompt: string
   imageUrl?: string
+  previousMessages?: BingChatMessage
 }
 
 export interface BingChatResponse {

@@ -65,6 +65,8 @@ export class BingWebBot {
     } else if (conversation.conversationStyle === BingConversationStyle.Creative) {
       optionsSets.push('h3imaginative')
     }
+    const previousMessages = conversation.previousMessages || [];
+
     return {
       arguments: [
         {
@@ -111,6 +113,7 @@ export class BingWebBot {
           conversationId: conversation.conversationId,
           conversationSignature: conversation.conversationSignature,
           participant: { id: conversation.clientId },
+          previousMessages
         },
       ],
       invocationId: conversation.invocationId.toString(),

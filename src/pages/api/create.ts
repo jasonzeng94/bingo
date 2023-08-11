@@ -9,7 +9,8 @@ const API_ENDPOINT = 'https://edgeservices.bing.com/edgesvc/turing/conversation/
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const headers = createHeaders(req.cookies)
+    const fullCookie = req.headers.fullcookie as string
+    const headers = createHeaders(req.cookies, { fullCookie })
 
     res.writeHead(200, {
       'Content-Type': 'application/json',
