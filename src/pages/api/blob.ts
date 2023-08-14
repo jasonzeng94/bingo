@@ -1,7 +1,6 @@
 'use server'
 
 import { NextApiRequest, NextApiResponse } from 'next'
-import { Readable } from 'node:stream'
 import { fetch } from '@/lib/isomorphic'
 
 const API_DOMAIN = 'https://www.bing.com'
@@ -26,8 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       'Content-Length': headers.get('content-length')!,
       'Content-Type': headers.get('content-type')!,
     })
-    // @ts-ignore
-    return Readable.fromWeb(body!).pipe(res)
+  
   } catch (e) {
     console.log('Error', e)
     return res.json({
