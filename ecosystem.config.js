@@ -6,7 +6,8 @@ module.exports ={
         "args": "start",
         "env": {
           "NODE_ENV": "production",
-          "DEBUG":"bingo"
+          "DEBUG": "bingo",
+          "PORT": 3008
         }
       }
     ]
