@@ -1,8 +1,11 @@
+version: "3"
 services:
-  bingo:
-    container_name: bingbo
-    build: . 
+  bingo1:
+    container_name: bingo1
+    build: .
     ports:
       - 7860:7860
-    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
 
+    restart: unless-stopped
