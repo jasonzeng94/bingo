@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const fullCookie = req.headers.fullcookie as string
   const headers = createHeaders(req.cookies, { fullCookie })
   
-  debug(headers)
+  debug('headers', headers)
 
   res.setHeader('Content-Type', 'text/stream; charset=UTF-8')
 
